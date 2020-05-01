@@ -1,6 +1,7 @@
 # Mahjong Money Tracker
  A tool to help track earnings while playing Mahjong.
 
+![Tracker Image](./tracker_example.png)
 ## Usage
 The Rate field will add a multiplier to the End Score when added. For tengo parlour rates, set this to 0.5. For tenpin, set it to 1.0.
 
