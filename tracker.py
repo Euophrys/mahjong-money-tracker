@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from datetime import date
 
 sg.theme('DarkAmber')
 layout = [  [sg.Text('Earnings:', key='Label', pad=(5,0))],
@@ -44,6 +45,8 @@ while True:
     event, values = window.read()
 
     if event is None:
+        with open("history.txt", "a") as f:
+            f.write("%s: %d\n" % (date.today().strftime("%B %d, %Y"), money))
         break
 
     if event in ('Tsumo Shuugi', 'Add Shuugi', 'Pay Shuugi'):
