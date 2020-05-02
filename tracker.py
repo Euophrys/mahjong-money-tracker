@@ -5,8 +5,9 @@ sg.theme('DarkAmber')
 layout = [  [sg.Text('Earnings:', key='Label', pad=(5,0))],
             [sg.Text('¥0', key='Money', size=(12,1), font=(None, 18), pad=(5,(0,3)))],
             [sg.Text('Rate'), sg.Input('1.0', key='Rate', size=(5,1))],
-            [sg.Text('Shuugi (¥)'), sg.Input('500', key='Shuugi', size=(6,1))],
+            [sg.Text('Rake (¥)'), sg.Input('600', key='Rake', size=(5,1))],
             [sg.Text('End Score'), sg.Input('', key='Score', size=(5,1)), sg.Button('Add')],
+            [sg.Text('Shuugi (¥)'), sg.Input('500', key='Shuugi', size=(6,1))],
             [sg.Button('Tsumo Shuugi', size=(12,1))],
             [sg.Button('Add Shuugi', size=(12,1))],
             [sg.Button('Pay Shuugi', size=(12,1))],
@@ -65,9 +66,10 @@ while True:
     if event is 'Add':
         rate = validate(values, 'Rate')
         score = validate(values, 'Score')
-        if rate is None or score is None: continue
+        rake = validate(values, 'Rake')
+        if rate is None or score is None or rake is None: continue
 
-        money += score * 100 * rate
+        money += (score * 100 * rate) - rake
         update_money()
         window['Score'].update(value='')
     
